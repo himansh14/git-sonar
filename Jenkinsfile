@@ -4,13 +4,9 @@ node{
     }
     stage('Sonarqube analysis'){
         def scannerHome = tool 'sonarqube';
-        withSonarQubeEnv('sonarqube'){
+        withSonarQubeEnv(){
             sh "${scannerHome}/bin/sonar-scanner \
-            -D sonar.login=admin \
-            -D sonar.password=@constant14 \
-            -D sonar.projectKey=sonarqube-jenkins \
-            -D sonar.exclusions=vendor/**,resources/**,**/*.java \
-            -D sonar.host.url=http://3.86.100.62:9001/"
+            -D sonar.projectKey=sonarqube-jenkins"
         }
     }
 }
